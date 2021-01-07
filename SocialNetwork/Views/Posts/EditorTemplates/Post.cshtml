@@ -1,0 +1,16 @@
+﻿@model SocialNetwork.Models.Entidades.Post
+
+<div >
+    
+    <div class="input-group">
+        <h4>Text</h4>
+        @Html.TextAreaFor(Model => Model.text,new {@class="form-control form-control-lg ", style = "width: 100%; max-width: 100%;" })
+    </div>
+    <div class="input-group">
+        <label for="PostImage"></label>
+        <input type="file" class="form-control-file" name="PostImage" id="PostImage" onchange="fileCheck(this);" />
+    </div>
+    
+
+    
+</div>

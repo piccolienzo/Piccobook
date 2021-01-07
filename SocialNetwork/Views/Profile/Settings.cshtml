@@ -1,0 +1,23 @@
+﻿@model SocialNetwork.Models.Entidades.User
+@{
+    ViewBag.Title = "Settings";
+}
+
+
+
+
+
+<div class="container settings-container">
+    <h2>Settings</h2>
+    @using (Html.BeginForm("Settings", "Profile", FormMethod.Post, new { enctype = "multipart/form-data", style = "width: 90%; max-width: 90%;" }))
+    {
+        <div>
+            @Html.EditorFor(Model => Model)
+
+            <div>
+                <input type="submit" name="SaveChanges" class="btn btn-post float-right" value="Save Changes" />
+            </div>
+
+        </div>
+    }
+</div>

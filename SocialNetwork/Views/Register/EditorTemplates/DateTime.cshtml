@@ -1,0 +1,20 @@
+﻿@model Nullable<DateTime>
+
+@{
+
+    if(Model == null)
+    {
+        var date = new DateTime(year: 1999, month: 1, day: 1);
+    }
+    @Html.TextBoxFor(date => date, "{0:yyyy-MM-dd}",
+     new
+     {
+         @class = " form-control form-control-lg ",
+         style = "width: 100%; max-width: 100%;",
+         type = "date",
+         id="birthdate"
+     })
+    
+
+   }
+     

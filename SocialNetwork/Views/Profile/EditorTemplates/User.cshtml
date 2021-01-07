@@ -1,0 +1,147 @@
+﻿@model SocialNetwork.Models.Entidades.User
+@{
+
+    string srcImg;
+    if (Model.profilepic == null)
+    {
+        srcImg = "/Images/DefaultProfilePic.png";
+
+    }
+    else
+    {
+        string imreBase64DataPP = Convert.ToBase64String(Model.profilepic);
+        string imgDataURLPP = string.Format("data:image/png;base64,{0}", imreBase64DataPP);
+        ViewBag.PROFILEPIC = imgDataURLPP;
+        srcImg = ViewBag.PROFILEPIC;
+    }
+}
+
+
+@Html.HiddenFor(Model => Model.iduser)
+
+<div class="row">
+    <div class="col">
+        <form runat="server">
+
+            <div class="form-group">
+                <img class="" id="ProfilePic" src="@srcImg" alt="" style="width: 100%; max-width: 100%; border: 2px solid black">
+            </div>
+            <div class="form-group">
+                <label for="NewProfilePic" style="width: 100%; max-width: 100%;" class="btn btn-post"> Chose Pic </label>
+                <input type="file" class="form-control-file" style="display:none" name="NewProfilePic" id="NewProfilePic" accept="image/png, image/jpeg" />
+            </div>
+        </form>
+    </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#ProfilePic').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]); // convert to base64 string
+                }
+            }
+
+            $("#NewProfilePic").change(function () {
+                readURL(this);
+            });
+
+            $('#NewProfilePic').inputFileText({
+                text: 'Select File'
+            });
+        </script>
+
+        <div class="col">
+            <div class="form-group row ">
+
+                <label class="col-lg-2 col-form-label" for="email">Email</label>
+
+                <div class="col-lg-10 ">
+                    @Html.EditorFor(Model => Model.email, new
+               {
+                   htmlAttributes = new
+                   {
+                       @class = "form-control form-control-lg ",
+                       id = "email",
+                       style = "width: 100%; max-width: 100%;"
+                   }
+                 })
+
+                </div>
+            </div>
+
+            <div class="form-group row ">
+                <label class="col-lg-2 col-form-label" for="birthdate">Birthday</label>
+
+                <div class="col-lg-10">
+                    @Html.EditorFor(Model => Model.birthdate)
+                </div>
+            </div>
+
+            <div class="form-group row ">
+                <label class="col-lg-2 col-form-label" for="name">Firstname</label>
+
+                <div class="col-lg-10">
+                    @Html.EditorFor(Model => Model.name, new
+                    {
+                        htmlAttributes = new
+                        {
+                            @class = "form-control form-control-lg ",
+                        id = "name",
+                        style = "width: 100%; max-width: 100%;"
+                        }
+                    })
+                </div>
+            </div>
+
+            <div class="form-group row ">
+                <label class="col-lg-2 col-form-label" for="lastname">Lastname</label>
+
+                <div class="col-lg-10">
+                    @Html.EditorFor(Model => Model.lastname, new
+                    {
+                        htmlAttributes = new
+                        {
+                            @class = "form-control form-control-lg ",
+                        id = "lastname",
+                        style = "width: 100%; max-width: 100%;"
+                        }
+                    })
+                </div>
+            </div>
+
+            <div class="form-group row ">
+                <label class="col-lg-2 col-form-label" for="TextBoxPasswordOld">Old Password</label>
+
+                <div class="col-lg-10">
+                    @Html.TextBox("TextBoxPasswordOld", null, new
+               {
+                   Type = "password",
+                   @class = "form-control form-control-lg ",
+                   style = "width: 100%; max-width: 100%;"
+               })
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-lg-2 col-form-label" for="TextBoxPasswordNew">New Password</label>
+
+                <div class="col-lg-10">
+                    @Html.TextBox("TextBoxPasswordNew", null, new
+               {
+                   Type = "password",
+                   @class = "form-control form-control-lg ",
+                   style = "width: 100%; max-width: 100%;"
+               })
+                </div>
+            </div>
+        </div>
+
+
+</div>
+    
+

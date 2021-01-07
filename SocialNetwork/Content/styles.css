@@ -1,0 +1,94 @@
+﻿
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+html {
+    overflow: overlay;    
+}
+
+*::-webkit-scrollbar {
+    width: 13px;
+}
+
+/* Track */
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Handle */
+*::-webkit-scrollbar-thumb {
+    background: rgba(133, 133, 133, 0.71);
+    border-radius: 10px;
+}
+
+    /* Handle on hover */
+    *::-webkit-scrollbar-thumb:hover {
+        background: rgba(133, 133, 133, 0.90);
+        border-radius: 10px;
+    }
+
+body {
+    
+    
+    padding: 0px;
+    
+}
+
+
+.navbar {
+    background-color: #04080F;
+}
+
+.navbar-text {
+    color: #04080F;
+    font-family:sans-serif;
+}
+.navbar-dropdown-text {
+    color: #04080F
+}
+
+
+.footer {
+
+    
+    background-color: #04080F;
+    color:white;
+    font-family:sans-serif;
+}
+
+.centered-content {
+    text-align: center;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+
+.btn-login,.btn-post {
+    color: white;
+    background-color: #04080F;
+    width: 100%;
+    
+}
+.login-container{
+    padding-top:20%;
+    padding-bottom:30%;
+    
+}
+
+.center {
+    display: block; 
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.post-container,.settings-container {
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+.form-post-box{
+    padding:0;
+    width:100%;
+}

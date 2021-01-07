@@ -1,0 +1,18 @@
+﻿@model List<SocialNetwork.Models.Entidades.Post>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@Html.ActionLink("Nuevo Post","Publish","Posts",new {@class="btn btn-danger" })
+
+<div>
+
+    @foreach (var item in Model)
+    {
+        {Html.RenderPartial("_PostPartial", item);}
+    }
+
+</div>
+

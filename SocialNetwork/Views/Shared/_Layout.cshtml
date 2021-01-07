@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/Content/styles.css" rel="stylesheet" />
+    <link href="~/Fonts/Roboto/" rel=""
+
+</head>
+<body>
+
+    <nav class="navbar navbar-dark navbar-expand-lg">
+        <div class="container">
+        <a class="navbar-brand" href="#">
+            @Html.ActionLink("Social Network", "Index", "Home", new { area = "" }, new { @class = "navbar-brand  navbar-text" })
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" style="color:white;"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+
+                @if (Session["User"] == null)
+                {
+                <li class="nav-item">
+                    @Html.RouteLink("Register", "Register", null, new { @class = "nav-link  navbar-text" })
+                </li>
+                    <li class="nav-item">
+                        @Html.RouteLink("Login", "Login", null, new { @class = "nav-link  navbar-text" })
+                    </li>
+                }
+                else
+                {
+                    SocialNetwork.Models.Entidades.User user = ((SocialNetwork.Models.Entidades.User)Session["User"]);
+                    <li class="nav-item">
+                        @Html.RouteLink("Posts", "Posts", null ,new { @class= "nav-link  navbar-text" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.RouteLink("New Post", "Publish",null, new { @class = "nav-link  navbar-text" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.RouteLink("Profile", $"Profile", new { username = user.username }, new { @class = "nav-link  navbar-text" })
+                    </li>
+
+                    <li class="nav-item">
+                        @Html.ActionLink("Logout", "Logout", "Home", null,new { @class = "nav-link navbar-text" })
+                    </li>
+                
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @user.username
+                    </a>
+                    <div class="dropdown-menu navbar-dropdown" aria-labelledby="navbarDropdown">
+                        
+
+                        @Html.RouteLink("Settings", "Settings", null, new { @class = "dropdown-item navbar-dropdown-text" })
+                        <div class="dropdown-divider"></div>
+                        @Html.ActionLink("Logout", "Logout", "Home", null, new { @class = "dropdown-item navbar-dropdown-text" })
+                    </div>
+                </li>
+                
+                }
+            </ul>
+
+
+            <!--<form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form> -->
+        </div>
+        </div>
+    </nav>
+
+    
+    <div class="container body-content ">
+        
+        @RenderBody()
+      
+    </div>
+    <footer class="container footer" style="text-align:center;">
+        <p>&copy; @DateTime.Now.Year - Picco</p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

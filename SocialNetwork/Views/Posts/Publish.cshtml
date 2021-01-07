@@ -1,0 +1,24 @@
+﻿@model SocialNetwork.Models.Entidades.Post
+
+@{
+    ViewBag.Title = "PublishPost";
+}
+
+<div class="container post-container">
+    
+               
+        @using (Html.BeginForm("Publish", "Posts", FormMethod.Post, new {enctype = "multipart/form-data", style = "width: 90%; max-width: 90%;" }))
+        {
+            <div class="" >
+                <div><h2>Make a post</h2></div>
+                <div>
+                    @Html.EditorFor(Model => Model)
+                </div>
+
+                
+                    <input type="submit" name="PublishPost" value="Publish" class="btn btn-post float-right" />
+                
+            </div>
+        }
+
+</div>

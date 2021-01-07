@@ -1,0 +1,82 @@
+﻿@model SocialNetwork.Models.Entidades.Post
+
+@{ 
+    string srcImgPost;
+    if (Model.image == null)
+    {
+
+        srcImgPost = null;
+    }
+    else
+    {
+        string imreBase64Data = Convert.ToBase64String(Model.image);
+        string imgDataURL = string.Format("data:image/png;base64,{0}", imreBase64Data);
+        ViewBag.IMAGE = imgDataURL;
+        srcImgPost = ViewBag.IMAGE;
+    }
+
+
+    string srcImg;
+    if (Model.User.profilepic == null)
+    {
+        srcImg = "/Images/DefaultProfilePic.png";
+
+    }
+    else
+    {
+        string imreBase64DataPP = Convert.ToBase64String(Model.User.profilepic);
+        string imgDataURLPP = string.Format("data:image/png;base64,{0}", imreBase64DataPP);
+        ViewBag.PROFILEPIC = imgDataURLPP;
+        srcImg = ViewBag.PROFILEPIC;
+    }
+}
+
+<style>
+    .border{
+        border: 2px solid blue;
+    }
+    .postTextProfile{
+        font-size:large;
+        
+    }
+    .img{
+        border-radius:50%;
+        border:2px solid black;
+    }
+
+</style>
+
+<div>   
+    <div class="card border-dark mb-3">
+        
+
+        @if (srcImgPost == null)
+        {
+
+        }
+        else
+        {
+            <img class="card-img-top" src="@srcImgPost" id="postimg" width="75%" alt="Card image cap">
+        }
+
+        <div class="card-body">
+            <h5 class="card-title">
+                <img class="img" src="@srcImg" width="75px" height="75px">
+                @Html.ActionLink(@Model.User.name + " " + @Model.User.lastname, "Username", "Profile", new { username = Model.User.username }, null)
+            </h5>
+            <p class="card-text">@Model.text</p>
+            <p class="card-text">
+                <small class="text-muted">
+                    @Html.ActionLink(@Model.datepost.ToShortDateString().ToString() + " " + @Model.timepost.ToString(), "Post", "Posts", new { id = Model.idpost }, null)
+                </small>
+
+
+
+            </p>
+        </div>
+    </div>
+
+
+</div>
+
+

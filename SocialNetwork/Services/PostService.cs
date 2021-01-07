@@ -10,7 +10,7 @@ namespace SocialNetwork.Services
     {
         public static bool CreatePostObject(Post post, HttpPostedFileBase file)
         {
-            //HttpPostedFileBase file = Request.Files["ImageData"];
+            //HttpPostedFileBase file = Request.Files["ImageData"]; ///
             byte[] img;
             if (file.FileName == "")
             {
